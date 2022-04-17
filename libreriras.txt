@@ -1,0 +1,8 @@
+pip install pandas
+pip install dash_core_components
+pip install dash
+pip install dash_bootstrap_components
+pip install statsmodels
+pip install openpyxl
+pip install pvlib
+pip install gunicorn
