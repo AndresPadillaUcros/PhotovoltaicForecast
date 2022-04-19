@@ -25,18 +25,18 @@ df_power=pd.read_excel(DATA_PATH.joinpath("df_power.xlsx"))
 #OBJECTS
 
 #Month buttons
-button1= html.Button('January', id='btn1', n_clicks=0,className='button-month active')
-button2= html.Button('February', id='btn2', n_clicks=0,className='button-month')
-button3= html.Button('March', id='btn3', n_clicks=0,className='button-month')
-button4= html.Button('April', id='btn4', n_clicks=0,className='button-month')
-button5= html.Button('May', id='btn5', n_clicks=0,className='button-month')
-button6= html.Button('June', id='btn6', n_clicks=0,className='button-month')
-button7= html.Button('July', id='btn7', n_clicks=0,className='button-month')
-button8= html.Button('August', id='btn8', n_clicks=0,className='button-month')
-button9= html.Button('September', id='btn9', n_clicks=0,className='button-month')
-button10= html.Button('October', id='btno', n_clicks=0,className='button-month')
-button11= html.Button('November', id='btnn', n_clicks=0,className='button-month')
-button12=html.Button('December', id='btnd', n_clicks=0,className='button-month') 
+button1= html.Button('January', id='btn-10', n_clicks=0,className='button-month  ')
+button2= html.Button('February', id='btn-11', n_clicks=0,className='button-month ')
+button3= html.Button('March', id='btn-12', n_clicks=0,className='button-month ')
+button4= html.Button('April', id='btn-13', n_clicks=0,className='button-month ' )
+button5= html.Button('May', id='btn-14', n_clicks=0,className='button-month')
+button6= html.Button('June', id='btn-15', n_clicks=0,className='button-month')
+button7= html.Button('July', id='btn-16', n_clicks=0,className='button-month')
+button8= html.Button('August', id='btn-17', n_clicks=0,className='button-month')
+button9= html.Button('September', id='btn-18', n_clicks=0,className='button-month')
+button10= html.Button('October', id='btn-19', n_clicks=0,className='button-month')
+button11= html.Button('November', id='btn-20', n_clicks=0,className='button-month')
+button12=html.Button('December', id='btn-21', n_clicks=0,className='button-month') 
 
 #drop menu with Years to average
 dropListYears = dcc.Dropdown(id='panel-selected', 
@@ -177,7 +177,6 @@ def Power(df, panel_string):
         panel=CdTe
     
     NOCT= panel['T_NOCT']
-    print(NOCT)
     df['Tpanel']= df['Temperature'] + (NOCT -20)*df['DNI']/800
     
     Temperatura=df['Tpanel']
@@ -245,46 +244,68 @@ layout=html.Div([
                         ),                
 ],className='container-fluid')
 
+
+
+
+#Callback Active button
+@app.callback(
+    [Output(f"btn-{i}", "className") for i in range(10,22)],
+    [Input(f"btn-{i}", "n_clicks") for i in range(10, 22)],
+)
+def set_active(*args):
+    ctx = dash.callback_context
+
+    if not ctx.triggered or not any(args):
+        return ["button-month" for _ in range(10,22)]
+
+    # get id of triggering button
+    button_id = ctx.triggered[0]["prop_id"].split(".")[0]
+
+    return [
+        "button-month active" if button_id == f"btn-{i}" else "button-month" for i in range(10,22)
+    ]
+
+
 #Callback Mapa
 @app.callback(
     Output(component_id='Map2',component_property='figure'),
-    [Input('btn1', 'n_clicks'),
-    Input('btn2', 'n_clicks'),
-    Input('btn3', 'n_clicks'),
-    Input('btn4', 'n_clicks'),
-    Input('btn5', 'n_clicks'),
-    Input('btn6', 'n_clicks'),
-    Input('btn7', 'n_clicks'),
-    Input('btn8', 'n_clicks'),
-    Input('btn9', 'n_clicks'),
-    Input('btno', 'n_clicks'),
-    Input('btnn', 'n_clicks'),
-    Input('btnd', 'n_clicks')]
+    [Input('btn-10', 'n_clicks'),
+    Input('btn-11', 'n_clicks'),
+    Input('btn-12', 'n_clicks'),
+    Input('btn-13', 'n_clicks'),
+    Input('btn-14', 'n_clicks'),
+    Input('btn-15', 'n_clicks'),
+    Input('btn-16', 'n_clicks'),
+    Input('btn-17', 'n_clicks'),
+    Input('btn-18', 'n_clicks'),
+    Input('btn-19', 'n_clicks'),
+    Input('btn-20', 'n_clicks'),
+    Input('btn-21', 'n_clicks')]
     )
 
 def update_map2(btn1,btn2,btn3,btn4,btn5,btn6,btn7, btn8,btn9,btn10,btn11,btn12):
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
-    if 'btn1' in changed_id:
+    if 'btn-10' in changed_id:
         month = 1
-    elif 'btn2' in changed_id:
+    elif 'btn-11' in changed_id:
         month = 2
-    elif 'btn3' in changed_id:
+    elif 'btn-12' in changed_id:
         month = 3
-    elif 'btn4' in changed_id:
+    elif 'btn-13' in changed_id:
         month = 4
-    elif 'btn5' in changed_id:
+    elif 'btn-14' in changed_id:
         month = 5
-    elif 'btn6' in changed_id:
+    elif 'btn-15' in changed_id:
         month = 6
-    elif 'btn7' in changed_id:
+    elif 'btn-16' in changed_id:
         month = 7
-    elif 'btn8' in changed_id:
+    elif 'btn-17' in changed_id:
         month = 8
-    elif 'btn9' in changed_id:
+    elif 'btn-18' in changed_id:
         month = 9
-    elif 'btno' in changed_id:
-        month = 7
-    elif 'btnn' in changed_id:
+    elif 'btn-19' in changed_id:
+        month = 10
+    elif 'btn-20' in changed_id:
         month =11
     else:
         month =12 
@@ -304,18 +325,18 @@ def update_map2(btn1,btn2,btn3,btn4,btn5,btn6,btn7, btn8,btn9,btn10,btn11,btn12)
 @app.callback(
     [Output(component_id='DemandCurve',component_property='figure'),
      Output(component_id='ExportFig',component_property='figure')],
-    [Input('btn1', 'n_clicks'),
-    Input('btn2', 'n_clicks'),
-    Input('btn3', 'n_clicks'),
-    Input('btn4', 'n_clicks'),
-    Input('btn5', 'n_clicks'),
-    Input('btn6', 'n_clicks'),
-    Input('btn7', 'n_clicks'),
-    Input('btn8', 'n_clicks'),
-    Input('btn9', 'n_clicks'),
-    Input('btno', 'n_clicks'),
-    Input('btnn', 'n_clicks'),
-    Input('btnd', 'n_clicks'),      
+    [Input('btn-10', 'n_clicks'),
+    Input('btn-11', 'n_clicks'),
+    Input('btn-12', 'n_clicks'),
+    Input('btn-13', 'n_clicks'),
+    Input('btn-14', 'n_clicks'),
+    Input('btn-15', 'n_clicks'),
+    Input('btn-16', 'n_clicks'),
+    Input('btn-17', 'n_clicks'),
+    Input('btn-18', 'n_clicks'),
+    Input('btn-19', 'n_clicks'),
+    Input('btn-20', 'n_clicks'),
+    Input('btn-21', 'n_clicks'),      
     Input(component_id='Map2',component_property='clickData'),
     Input(component_id='input-on-submit',component_property='value'),
     Input(component_id='panel-selected',component_property='value')]
@@ -325,27 +346,27 @@ def update_map2(btn1,btn2,btn3,btn4,btn5,btn6,btn7, btn8,btn9,btn10,btn11,btn12)
 def update_graph(btn1,btn2,btn3,btn4,btn5,btn6,btn7, btn8,btn9,btn10,btn11,btn12,clickData,n_panels,panel):
 
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
-    if 'btn1' in changed_id:
+    if 'btn-10' in changed_id:
         month = 1
-    elif 'btn2' in changed_id:
+    elif 'btn-11' in changed_id:
         month = 2
-    elif 'btn3' in changed_id:
+    elif 'btn-12' in changed_id:
         month = 3
-    elif 'btn4' in changed_id:
+    elif 'btn-13' in changed_id:
         month = 4
-    elif 'btn5' in changed_id:
+    elif 'btn-14' in changed_id:
         month = 5
-    elif 'btn6' in changed_id:
+    elif 'btn-15' in changed_id:
         month = 6
-    elif 'btn7' in changed_id:
+    elif 'btn-16' in changed_id:
         month = 7
-    elif 'btn8' in changed_id:
+    elif 'btn-17' in changed_id:
         month = 8
-    elif 'btn9' in changed_id:
+    elif 'btn-18' in changed_id:
         month = 9
-    elif 'btno' in changed_id:
+    elif 'btn-19' in changed_id:
         month = 7
-    elif 'btnn' in changed_id:
+    elif 'btn-20' in changed_id:
         month =11
     else:
         month =12 
@@ -364,7 +385,7 @@ def update_graph(btn1,btn2,btn3,btn4,btn5,btn6,btn7, btn8,btn9,btn10,btn11,btn12
 
     dff=dff.groupby('Hour')[['DNI','Temperature']].mean().round(1).reset_index()   
 
-    print(panel)
+
     df_power=Power( dff,   panel)
     
     df_power['Power']=int(n_panels)*df_power['Power']/1000

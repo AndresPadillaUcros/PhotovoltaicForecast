@@ -148,10 +148,8 @@
     color: white;
 }
 
-
-
-.active, .button-month {
-    background-color: #666;
+.active {
+    background-color: red;
     color: white;
   }
 
