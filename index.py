@@ -1,7 +1,7 @@
 #REQUIREMENTS
 import dash_bootstrap_components as dbc
 from dash import Input, Output,dcc,html
-from app import app
+from app import app,server
 
 #LOAD THE DIFFERENT TABS
 from apps import sidebar_component, home,analytics,geoportal
