@@ -13,7 +13,7 @@ app.layout = dbc.Container([
     dcc.Location(id="url",refresh=False),
     sidebar_component.sidebar,
     content
-    ],fluid=True)
+    ],fluid=True,className='container-fluid')
 
 #CALLBACKS
 @app.callback(Output('page-content', 'children'),
@@ -29,4 +29,4 @@ def display_page(pathname):
 
 #RUN APP
 if __name__==('__main__'):
-    app.run_server(debug=True)
+    app.run_server(debug=True,use_reloader=True )

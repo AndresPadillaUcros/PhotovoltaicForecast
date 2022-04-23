@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 from dash import Input, Output,dcc,html
 
 #OBJECTS
-DS4A_Img = html.Img(src="assets\logo.svg", id="ds4a-image", className="logo_ds4a") 
+DS4A_Img = html.Img(src="assets\logo.png", id="ds4a-image", className="logo_ds4a") 
 COL_Img = html.Img(src="assets\logo_colombia.png", id="col-image", className="logo_col") 
 
 sidebar = dbc.Nav([
@@ -10,7 +10,7 @@ sidebar = dbc.Nav([
                         dbc.Col([
                                     DS4A_Img,
                                     COL_Img
-                                ],className='d-flex justify-content-center m-auto',
+                                ],className='d-flex justify-content-center wrap-element ',
                                 xs={'size':12,'offset':0,'order':1}, 
                                 sm={'size':12,'offset':0,'order':1}, 
                                 md={'size':3,'offset':0,'order':1}, 

@@ -2,6 +2,7 @@
 .html{
     background-color: #F2F2F2;
     width:100%;
+
 }
 
 .logo_ds4a{
@@ -48,13 +49,13 @@
     margin-top: 2px;
     padding: 2rem;
     background-color:#F2F2F2; 
+    min-height: 100vh;
 }
-
 /*Home tab */
 
 .titulo{
     color: rgb(16, 151, 230);
-    font-size: 80px;
+    font-size: 60px;
     text-align: center;
     font-weight: bold;
     font-family: 'Times New Roman', serif;;
@@ -63,9 +64,8 @@
 }
 
 .home_img{
-    max-width: 100%;
     height: auto;
-    width:60rem;
+    width: 30rem;
     margin-top: 4rem;
     border-radius:  70px;
     border: 1px solid rgb(16, 231, 213);
@@ -182,3 +182,27 @@
     display:flex;
     gap: 1em;
 }
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+padding-left: 0;
+padding-right:0;
+height:100vh;
+}
+
+
+@media (max-width: 480px) {
+    .wrap-element {
+      display: flex;
+      flex-wrap:wrap;
+      gap:1em
+    }
+    .home_img{
+        width: 10rem;
+    }    
+  }
+
+  @media (max-width: 600px) {
+    .home_img{
+        width: 15rem;
+    }    
+  }
