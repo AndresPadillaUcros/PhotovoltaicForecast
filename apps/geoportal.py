@@ -234,11 +234,11 @@ layout=html.Div([
                             html.Div([                  
                                     html.Label('Interactive map with available locations',className='label',style={"color":"red","margin-top":"3rem"}),
                                     html.Label('Click me!',className='label',style={"color":"blue","font-size":"15px"}),
-                                    dcc.Graph(figure={},id="Map2",clickData={'points': [{'customdata': 1}]},className='graph-map',style={"margin-top":"2rem"}),
+                                    dcc.Graph(figure={},id="Map2",clickData={'points': [{'customdata': 1}]},className='graph-map',style={"margin-top":"2rem"},config={'responsive': True}),
                                     ],className='col-sm-12 col-md-12 col-lg-6'),
                             html.Div([
-                                    dcc.Graph(id="DemandCurve",figure={},className='graph',style={'height': '300px'}),
-                                    dcc.Graph(id="ExportFig",figure={},className='graph',style={'height': '300px'})
+                                    dcc.Graph(id="DemandCurve",figure={},className='graph',style={'height': '300px'},config={'responsive': True}),
+                                    dcc.Graph(id="ExportFig",figure={},className='graph',style={'height': '300px'},config={'responsive': True})
                                     ],className='col-sm-12 col-md-12 col-lg-6') 
                             ], className='row'
                         ),                
