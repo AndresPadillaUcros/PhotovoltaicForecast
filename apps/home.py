@@ -21,7 +21,7 @@ card = dbc.Card(
 #LAYOUT
 layout=html.Div([
             html.Div([
-                html.Div('Irradiance in Colombia',className='titulo ')
+                html.Div('Photovoltaic forecasting in Colombia',className='titulo ')
                     ]),
             html.Hr(),
             html.Div([

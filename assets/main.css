@@ -1,9 +1,5 @@
 /*Index tab */
-.html{
-    background-color: #F2F2F2;
-    width:100%;
 
-}
 
 .logo_ds4a{
     display: block;
@@ -27,13 +23,10 @@
 }
 
 .sidebar_style{
-    top: 0;
-    bottom: 0;
     padding: 2rem 1rem;
     background-color: #F9F9F9;
     font-size: 20px;
     box-shadow: 1px 1px 1px 1px gainsboro;
-
 }
 
 .nav-link{
@@ -51,8 +44,8 @@
     background-color:#F2F2F2; 
     min-height: 100vh;
 }
-/*Home tab */
 
+/*Home tab */
 .titulo{
     color: rgb(16, 151, 230);
     font-size: 60px;
@@ -60,7 +53,6 @@
     font-weight: bold;
     font-family: 'Times New Roman', serif;;
     text-shadow: rgb(248, 252, 16) -3px 0px, red 0px 2px;
-
 }
 
 .home_img{
@@ -199,10 +191,17 @@
     .home_img{
         width: 10rem;
     }    
+    .titulo{
+        font-size: 15px;
+    }
+
   }
 
   @media (max-width: 600px) {
     .home_img{
         width: 15rem;
-    }    
+    }   
+    .titulo{
+        font-size: 40px;
+    } 
   }

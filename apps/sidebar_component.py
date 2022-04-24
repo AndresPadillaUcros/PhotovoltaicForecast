@@ -13,7 +13,7 @@ sidebar = dbc.Nav([
                                 ],className='d-flex justify-content-center wrap-element ',
                                 xs={'size':12,'offset':0,'order':1}, 
                                 sm={'size':12,'offset':0,'order':1}, 
-                                md={'size':3,'offset':0,'order':1}, 
+                                md={'size':5,'offset':0,'order':1}, 
                                 lg={'size':3,'offset':0,'order':1}, 
                                 xl={'size':3,'offset':0,'order':1}
                                 ),                              
@@ -25,7 +25,7 @@ sidebar = dbc.Nav([
                                 ],className='d-flex justify-content-center m-auto',
                                 xs={'size':12,'offset':0,'order':2}, 
                                 sm={'size':12,'offset':0,'order':2}, 
-                                md={'size':6,'offset':3,'order':2}, 
+                                md={'size':6,'offset':1,'order':2}, 
                                 lg={'size':4,'offset':5,'order':2}, 
                                 xl={'size':4,'offset':5,'order':2}
                                 )
